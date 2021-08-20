@@ -163,7 +163,7 @@ impl Client {
 
 #[derive(Serialize)]
 pub struct SerializableClient {
-    id: ClientID,
+    client: ClientID,
     available: Decimal,
     held: Decimal,
     total: Decimal,
@@ -176,7 +176,7 @@ impl Serialize for Client {
         S: Serializer,
     {
         SerializableClient {
-            id: self.id,
+            client: self.id,
             available: self.available.round_dp(4),
             held: self.held.round_dp(4),
             total: (self.held + self.available).round_dp(4),
@@ -442,7 +442,7 @@ mod tests {
             disputed_deposit_ids: UniqueTransactionIDs::new(),
             seen_transaction_ids: UniqueTransactionIDs::new(),
         };
-        let compare_data = "id,available,held,total,locked\n1,2.1234,2.0001,4.1235,true\n";
+        let compare_data = "client,available,held,total,locked\n1,2.1234,2.0001,4.1235,true\n";
 
         let mut writer = csv::Writer::from_writer(Vec::new());
         writer.serialize(client).unwrap();

@@ -31,7 +31,7 @@ cargo test
 * `src/transaction.rs`: has tests for deserializing transactions. (eg. spaces, invalid fields)
 * `fixtures/test.csv`: simple sample data with one client. Tests the different transaction types using the whole program. Should result in:
 ```
-id,available,held,total,locked
+client,available,held,total,locked
 1,11.02,0.0000,11.02,true
 ```
 * `fixtures/gen.py`: simple python script to generate big [random] data, to test loading the program.
